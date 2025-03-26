@@ -20,7 +20,9 @@ on:
           - Official
           - Next
           - MKSU
-        default: Next
+          - RKSU
+          - RKSU-fork
+        default: RKSU-fork
       kernelsu_branch:
         description: "Choose ksu branch"
         required: true
