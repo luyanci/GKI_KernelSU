@@ -169,7 +169,7 @@ jobs:
             echo "This is the RKSU variant"
             REPO_URL="https://github.com/rsuntk/KernelSU.git"
             REPO_URL2="rsuntk/KernelSU"
-          elif [ "${{ inputs.kernelsu_variant }}" == "MKSU" ]; then
+          elif [ "${{ inputs.kernelsu_variant }}" == "RKSU-fork" ]; then
             echo "This is the RKSU-fork variant"
             REPO_URL="https://github.com/luyanci/KernelSU.git"
             REPO_URL2="luyanci/KernelSU"
