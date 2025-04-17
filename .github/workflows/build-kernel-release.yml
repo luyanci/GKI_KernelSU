@@ -165,8 +165,6 @@ jobs:
             echo "This is the MKSU variant"
             REPO_URL="https://github.com/5ec1cff/KernelSU.git"
             REPO_URL2="5ec1cff/KernelSU"
-          else
-            echo "Unknown variant"
           elif [ "${{ inputs.kernelsu_variant }}" == "RKSU" ]; then
             echo "This is the RKSU variant"
             REPO_URL="https://github.com/rsuntk/KernelSU.git"
@@ -175,6 +173,8 @@ jobs:
             echo "This is the RKSU-fork variant"
             REPO_URL="https://github.com/luyanci/KernelSU.git"
             REPO_URL2="luyanci/KernelSU"
+          else
+            echo "Unknown variant"
           fi
           
           if [[ "${{ inputs.kernelsu_branch }}" == "Stable" && "${{ inputs.kernelsu_variant }}" != "MKSU" ]]; then
