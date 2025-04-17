@@ -267,8 +267,10 @@ jobs:
             cp ../../kernel_patches/mksu/fix.patch ./KernelSU/
             patch -p1 < fix.patch
           elif [ "${{ inputs.kernelsu_variant }}" == "RKSU" ]; then
+            cd ./KernelSU
             echo "No need to patch"
           elif [ "${{ inputs.kernelsu_variant }}" == "RKSU-fork" ]; then
+            cd ./KernelSU
             echo "No need to patch"
           else
             echo "Invalid KernelSU variant selected!"
