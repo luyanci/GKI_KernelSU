@@ -200,7 +200,7 @@ jobs:
           else
             # Fetch the specific tag
             TAG=${{ inputs.kernelsu_branch_other }}
-            if git ls-remote --tags $REPO_URL | grep -q "refs/heads/$TAG"; then
+            if git ls-remote $REPO_URL | grep -q "refs/heads/$TAG"; then
               KSU_REF=$TAG
               KSU_URL="https://github.com/$REPO_URL2/releases/tag/$TAG"
             else
