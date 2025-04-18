@@ -200,7 +200,7 @@ jobs:
           else
             # Fetch the specific tag
             TAG=${{ inputs.kernelsu_branch_other }}
-            if git ls-remote --tags $REPO_URL | grep -q "refs/tags/$TAG"; then
+            if git ls-remote --tags $REPO_URL | grep -q "refs/heads/$TAG"; then
               KSU_REF=$TAG
               KSU_URL="https://github.com/$REPO_URL2/releases/tag/$TAG"
             else
@@ -265,6 +265,20 @@ jobs:
             echo "$RELEASE_NOTES" >> $GITHUB_ENV
             echo "MKSU Manager:" >> $GITHUB_ENV
             echo "-> https://github.com/5ec1cff/KernelSU" >> $GITHUB_ENV
+            echo "EOF" >> $GITHUB_ENV
+          elif [ "${{ inputs.kernelsu_variant }}" == "RKSU" ]; then
+            echo "This is the RKSU variant"
+            echo "RELEASE_NOTES<<EOF" >> $GITHUB_ENV
+            echo "$RELEASE_NOTES" >> $GITHUB_ENV
+            echo "RKSU Manager:" >> $GITHUB_ENV
+            echo "-> https://github.com/rsuntk/KernelSU" >> $GITHUB_ENV
+            echo "EOF" >> $GITHUB_ENV
+          elif [ "${{ inputs.kernelsu_variant }}" == "RKSU-fork" ]; then
+            echo "This is the RKSU-fork variant"
+            echo "RELEASE_NOTES<<EOF" >> $GITHUB_ENV
+            echo "$RELEASE_NOTES" >> $GITHUB_ENV
+            echo "RKSU-fork Manager:" >> $GITHUB_ENV
+            echo "-> https://github.com/luyanci/KernelSU" >> $GITHUB_ENV
             echo "EOF" >> $GITHUB_ENV
           else
             echo "Unknown variant"
