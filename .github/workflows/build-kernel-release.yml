@@ -202,7 +202,7 @@ jobs:
             TAG=${{ inputs.kernelsu_branch_other }}
             if git ls-remote $REPO_URL | grep -q "refs/heads/$TAG"; then
               KSU_REF=$TAG
-              KSU_URL="https://github.com/$REPO_URL2/releases/tag/$TAG"
+              KSU_URL="https://github.com/$REPO_URL2/tree/$TAG"
             else
               echo "Error: Specified tag '$TAG' not found in KernelSU-Next" >&2
               exit 1
