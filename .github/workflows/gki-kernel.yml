@@ -358,6 +358,7 @@ jobs:
           sed -i 's/check_defconfig//' ./common/build.config.gki
       
       - name: Config BBR
+        if: false # not useful,disabled.
         #if: ${{ inputs.kernel_version != '6.6' }}
         run: |
           cd "$CONFIG/common"
@@ -377,7 +378,7 @@ jobs:
           echo "Changing to configuration directory: $CONFIG..."
           cd "$CONFIG"
 
-          sed -i '$s|echo "\$res"|echo "\$res-Wild+"|' ./common/scripts/setlocalversion
+          sed -i '$s|echo "\$res"|echo "\$res-Ycc+"|' ./common/scripts/setlocalversion
 
           # Run perl command to modify UTS_VERSION
           perl -pi -e 's{UTS_VERSION="\$\(echo \$UTS_VERSION \$CONFIG_FLAGS \$TIMESTAMP \| cut -b -\$UTS_LEN\)"}{UTS_VERSION="#1 SMP PREEMPT Sat Apr 20 04:20:00 UTC 2024"}' ./common/scripts/mkcompile_h
