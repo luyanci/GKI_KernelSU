@@ -18,15 +18,15 @@ on:
       kernelsu_variant:
         required: true
         type: string
-        default: Next
+        default: RKSU-fork
       kernelsu_branch:
         required: true
         type: string
-        default: Stable
+        default: Other
       kernelsu_branch_other:
         required: false
         type: string
-        default: ""
+        default: "susfs-main"
   
 jobs:
   build-test-kernel-kernelsu-susfs:
