@@ -243,6 +243,7 @@ jobs:
           # Copy SUSFS patches
           cp ../susfs4ksu/kernel_patches/50_add_susfs_in_gki-${{ inputs.android_version }}-${{ inputs.kernel_version }}.patch ./common/
           cp ../susfs4ksu/kernel_patches/fs/* ./common/fs/
+          #rm ./common/fs/sus_su.c
           cp ../susfs4ksu/kernel_patches/include/linux/* ./common/include/linux/
 
           if [ "${{ inputs.kernelsu_variant }}" == "Official" ]; then
@@ -320,6 +321,9 @@ jobs:
           
           if [ "${{ inputs.kernelsu_variant }}" == "Next" ]; then
             echo "CONFIG_KSU_WITH_KPROBES=n" >> ./common/arch/arm64/configs/gki_defconfig
+          elif [ "${{ inputs.kernelsu_variant }}" == "RKSU" ] || [ "${{ inputs.kernelsu_variant }}" == "RKSU-fork" ]; then
+            echo "CONFIG_KSU_MANUAL_HOOK=n" >> ./common/arch/arm64/configs/gki_defconfig
+          fi
           fi
 
           # Add SUSFS configuration settings
