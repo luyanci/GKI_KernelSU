@@ -283,6 +283,10 @@ jobs:
           # Change to common directory and apply common SUSFS patch
           cd ../common
           patch -p1 < 50_add_susfs_in_gki-${{ inputs.android_version }}-${{ inputs.kernel_version }}.patch || true
+          # fix screen closed delay
+          sed -i '/if (!pci_is_bridge(dev))/c\	if (!pci_is_bridge(dev) || !dev->bridge_d3)' drivers/pci/pci.c
+
+
 
       - name: Apply New Hooks Patches
         run: |
