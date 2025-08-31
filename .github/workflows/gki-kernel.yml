@@ -324,7 +324,6 @@ jobs:
           elif [ "${{ inputs.kernelsu_variant }}" == "RKSU" ] || [ "${{ inputs.kernelsu_variant }}" == "RKSU-fork" ]; then
             echo "CONFIG_KSU_MANUAL_HOOK=n" >> ./common/arch/arm64/configs/gki_defconfig
           fi
-          fi
 
           # Add SUSFS configuration settings
           echo "CONFIG_KSU_SUSFS=y" >> ./common/arch/arm64/configs/gki_defconfig
