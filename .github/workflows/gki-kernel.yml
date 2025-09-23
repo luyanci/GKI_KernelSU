@@ -286,7 +286,11 @@ jobs:
           # fix screen closed delay
           sed -i '/if (!pci_is_bridge(dev))/c\	if (!pci_is_bridge(dev) || !dev->bridge_d3)' drivers/pci/pci.c
 
-
+      - name: "😋 Setup BaseBand-Guard"
+        run: |
+          cd "$CONFIG"
+          wget -O- https://github.com/vc-teahouse/Baseband-guard/raw/main/setup.sh | bash -s fix-type-debug
+          echo -e "CONFIG_BBG=y" >> ./common/arch/arm64/configs/gki_defconfig
 
       - name: Apply New Hooks Patches
         run: |
